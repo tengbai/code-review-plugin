@@ -1,0 +1,11 @@
+<application>
+  <component name="FUSApplicationUsageTrigger">
+    <session id="655482535">
+      <usages-collector id="statistics.lifecycle.app">
+        <usage id="ide.start" value="2" />
+        <usage id="ide.close" value="2" />
+      </usages-collector>
+    </session>
+  </component>
+  <component name="UsagesStatistic" show-notification="false" />
+</application>
