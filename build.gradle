@@ -27,4 +27,5 @@ patchPluginXml {
 
 dependencies {
     compile("org.projectlombok:lombok:1.18.2")
+    compile("com.alibaba:fastjson:1.2.62")
 }

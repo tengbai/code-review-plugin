@@ -1,6 +1,11 @@
+package utils;
+
+import Constants.NameConstants;
 import com.intellij.ide.util.PropertiesComponent;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Collections;
+import java.util.List;
 
 public class PropertiesComponentUtils {
 
@@ -15,7 +20,7 @@ public class PropertiesComponentUtils {
         }
         //获取 application 级别的 PropertiesComponent
         PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
-        propertiesComponent.setValue(Constants.APPLICATION_NAME, value);
+        propertiesComponent.setValue(NameConstants.APPLICATION_NAME, value);
     }
 
     /**
@@ -26,8 +31,8 @@ public class PropertiesComponentUtils {
     public static String getValue() {
 
         PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
-        String value = propertiesComponent.getValue(Constants.APPLICATION_NAME);
-        return value == null ? "" : value;
+        String value = propertiesComponent.getValue(NameConstants.APPLICATION_NAME);
+        return value == null ? null : value;
     }
 
 }
