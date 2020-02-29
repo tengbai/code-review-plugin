@@ -9,22 +9,22 @@ import java.util.stream.Collectors;
 
 public class Store {
 
-    public List<CommentDTO> getComments() {
-        return this.getPropertiesComponent().stream().sorted().collect(Collectors.toList());
+    public static List<CommentDTO> getComments() {
+        return getPropertiesComponent().stream().sorted().collect(Collectors.toList());
     }
 
-    public void setComments(List<CommentDTO> comments) {
-        this.setPropertiesComponent(comments);
+    public static void setComments(List<CommentDTO> comments) {
+        setPropertiesComponent(comments);
     }
 
-    public void appendComment(CommentDTO comment) {
-        List<CommentDTO> commentDTOs = this.getComments();
+    public static void appendComment(CommentDTO comment) {
+        List<CommentDTO> commentDTOs = getComments();
         commentDTOs.add(comment);
-        this.setComments(commentDTOs);
+        setComments(commentDTOs);
     }
 
-    public void updateComment(CommentDTO comment) {
-        List<CommentDTO> commentDTOs = this.getComments();
+    public static void updateComment(CommentDTO comment) {
+        List<CommentDTO> commentDTOs = getComments();
         if(commentDTOs.size() == 0){
             return;
         }
@@ -37,11 +37,11 @@ public class Store {
                     }
                 })
                 .collect(Collectors.toList());
-        this.setComments(commentDTOs);
+        setComments(commentDTOs);
     }
 
-    public void deleteComment(CommentDTO comment) {
-        List<CommentDTO> commentDTOs = this.getComments();
+    public static void deleteComment(CommentDTO comment) {
+        List<CommentDTO> commentDTOs = getComments();
         if(commentDTOs.size() == 0){
             return;
         }
@@ -49,15 +49,15 @@ public class Store {
         commentDTOs = commentDTOs.stream()
                 .filter(c -> c.getId() != deleteId)
                 .collect(Collectors.toList());
-        this.setComments(commentDTOs);
+        setComments(commentDTOs);
     }
 
-    private void setPropertiesComponent(List<CommentDTO> comments){
+    private static void setPropertiesComponent(List<CommentDTO> comments){
         String commentJson = listToJson(comments);
         PropertiesComponentUtils.setValue(commentJson);
     }
 
-    private List<CommentDTO> getPropertiesComponent(){
+    private static List<CommentDTO> getPropertiesComponent(){
         String commentJson = PropertiesComponentUtils.getValue();
         if(commentJson == null){
             return Collections.EMPTY_LIST;
@@ -66,11 +66,11 @@ public class Store {
     }
 
 
-    private String listToJson(List<CommentDTO> comments) {
+    private static String listToJson(List<CommentDTO> comments) {
         return JSON.toJSONString(comments);
     }
 
-    private List<CommentDTO> jsonToList(String commentStrings) {
+    private static List<CommentDTO> jsonToList(String commentStrings) {
         return JSON.parseArray(commentStrings, CommentDTO.class);
     }
 

@@ -24,9 +24,4 @@
             <add-to-group group-id="EditMenu" anchor="first"/>
         </action>
     </actions>
-    <application-components>
-        <component>
-            <implementation-class>MyApplication</implementation-class>
-        </component>
-    </application-components>
 </idea-plugin>
