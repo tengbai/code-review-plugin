@@ -6,25 +6,31 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CommentItem extends JComponent {
-    private JPanel contentPane = new JPanel(new FlowLayout(FlowLayout.CENTER));
-    private JTextPane textPane = new JTextPane();
+    private JPanel contentPane = new JPanel();
+
+    private JTextPane text = new JTextPane();
+    private JPanel textPane = new JPanel();
+    private JPanel buttonPanel = new JPanel();
     private JButton editButton = new JButton("edit");
     private JButton deleteButton = new JButton("delete");
 
     public CommentItem(CommentDTO comment) {
-        JPanel buttonPanel = new JPanel();
         contentPane.setLayout(new BorderLayout());
-        contentPane.setSize(400, 200);
-        this.textPane.setSize(300,200);
-        buttonPanel.setSize(100, 200);
+        contentPane.setPreferredSize(new Dimension(400, 200));
+        textPane.setPreferredSize(new Dimension(300,200));
+        buttonPanel.setPreferredSize(new Dimension(100, 200));
+        buttonPanel.setLayout(null);
 
-        this.textPane.setText(comment.getContent());
+        this.text.setText(comment.getContent());
         this.textPane.setBackground(Color.blue);
+        this.textPane.add(this.text);
 
-        buttonPanel.add(editButton, BorderLayout.NORTH);
-        buttonPanel.add(deleteButton, BorderLayout.SOUTH);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(editButton);
+        editButton.setBounds(10 ,20,60, 20);
+        deleteButton.setBounds(10, 60, 60 ,20);
 
-        this.contentPane.add(textPane, BorderLayout.WEST);
+        this.contentPane.add(textPane, BorderLayout.CENTER);
         this.contentPane.add(buttonPanel, BorderLayout.EAST);
     }
 
