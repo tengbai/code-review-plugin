@@ -1,46 +1,35 @@
 package ui;
 
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
 
-public class CommentCreate extends JDialog {
-    private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton buttonCancel;
-    private JTextArea textArea1;
-
+public class CommentCreate extends JFrame{
+    private JFrame jFrame = new JFrame("create comment");
+    private JPanel buttonPanel = new JPanel();
+    private JPanel contentPanel = new JPanel();
+    private JTextArea textPanel = new JTextArea(10, 4);
+    private JButton cancelButton = new JButton("cancel");
+    private JButton confirmButton = new JButton("confirm");
     public CommentCreate() {
-        setContentPane(contentPane);
-        setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
-        setLocationRelativeTo(null);
+        jFrame.setSize(400, 300);
+        jFrame.setLocationRelativeTo(null);
+        jFrame.setVisible(true);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setLayout(new FlowLayout(FlowLayout.CENTER));
+        contentPanel.setSize(400, 300);
+        textPanel.setBounds(10, 10, 380, 200);
+        buttonPanel.setBounds(10, 210, 380, 100);
 
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
+        confirmButton.setPreferredSize(new Dimension(100, 40));
+        cancelButton.setPreferredSize(new Dimension(100, 40));
+        buttonPanel.add(confirmButton);
+        buttonPanel.add(cancelButton);
 
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
+        contentPanel.setLayout(null);
+        contentPanel.add(textPanel, BorderLayout.CENTER);
+        contentPanel.add(buttonPanel, BorderLayout.SOUTH);
+        jFrame.setContentPane(contentPanel);
 
-        // call onCancel() when cross is clicked
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
-
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     private void onOK() {
@@ -54,9 +43,6 @@ public class CommentCreate extends JDialog {
     }
 
     public static void main(String[] args) {
-        CommentCreate dialog = new CommentCreate();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
+        new CommentCreate();
     }
 }
