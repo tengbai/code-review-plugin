@@ -23,11 +23,5 @@
         <action id="action.CodeSelectAction" class="action.CodeSelectAction" text="add comment" description="test">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
-        <!--<action id="EditorBasics.EditorIllustrationAction"-->
-                <!--class="action.EditorIllustrationAction"-->
-                <!--text="Editor Replace Text"-->
-                <!--description="Replaces selected text with 'Replacement'.">-->
-            <!--<add-to-group group-id="EditorPopupMenu" anchor="first"/>-->
-        <!--</action>-->
     </actions>
 </idea-plugin>

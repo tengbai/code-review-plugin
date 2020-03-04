@@ -1,13 +1,14 @@
 package ui;
 
 import store.CommentDTO;
+import store.Store;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class CommentItem extends JComponent {
     private JPanel contentPane = new JPanel();
-
     private JLabel titlePanel = new JLabel();
     private JTextPane text = new JTextPane();
     private JPanel textPane = new JPanel();
@@ -15,7 +16,16 @@ public class CommentItem extends JComponent {
     private JButton editButton = new JButton("edit");
     private JButton deleteButton = new JButton("delete");
 
+    private CommentDTO commentDTO;
+
     public CommentItem(CommentDTO comment) {
+        this.commentDTO = comment;
+        this.createUI(comment);
+        this.editButton.addActionListener(e -> this.handleEditBtnClick(e));
+        this.deleteButton.addActionListener(e -> this.handleDeleteBtnClick(e));
+    }
+
+    private void createUI(CommentDTO comment){
         contentPane.setLayout(new BorderLayout());
         contentPane.setPreferredSize(new Dimension(400, 200));
         titlePanel.setPreferredSize(new Dimension(400,20));
@@ -35,6 +45,14 @@ public class CommentItem extends JComponent {
         this.contentPane.add(titlePanel, BorderLayout.NORTH);
         this.contentPane.add(textPane, BorderLayout.CENTER);
         this.contentPane.add(buttonPanel, BorderLayout.EAST);
+    }
+
+    private void handleEditBtnClick(ActionEvent e){
+
+    }
+
+    private void handleDeleteBtnClick(ActionEvent e) {
+        Store.deleteComment(this.commentDTO);
     }
 
     public JPanel getContentPane(){
@@ -61,5 +79,14 @@ public class CommentItem extends JComponent {
     }
     public static void main(String[] args) {
         new CommentItem(CommentDTO.builder().id("1").title("hhh").content("hhh").createData(11L).updatedDate(11L).build());
+    }
+
+
+    private void setCommentDTO(CommentDTO commentDTO){
+        this.commentDTO = commentDTO;
+    }
+
+    private CommentDTO getCommentDTO(){
+        return this.commentDTO;
     }
 }

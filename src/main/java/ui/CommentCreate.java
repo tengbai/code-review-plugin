@@ -76,11 +76,12 @@ public class CommentCreate extends JFrame {
     private void onOK() {
         // add your code here
         dispose();
+        this.jFrame.setVisible(false);
     }
 
     private void onCancel() {
         // add your code here if necessary
-        dispose();
+        this.jFrame.setVisible(false);
     }
 
     public static void main(String[] args) {

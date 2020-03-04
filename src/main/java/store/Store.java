@@ -4,13 +4,16 @@ import com.alibaba.fastjson.JSON;
 import utils.PropertiesComponentUtils;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Store {
 
     public static List<CommentDTO> getComments() {
-        return getPropertiesComponent().stream().sorted().collect(Collectors.toList());
+        return getPropertiesComponent().stream()
+                .sorted(Comparator.comparing(CommentDTO::getUpdatedDate))
+                .collect(Collectors.toList());
     }
 
     public static void setComments(List<CommentDTO> comments) {
