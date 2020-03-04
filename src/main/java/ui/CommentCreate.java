@@ -32,6 +32,13 @@ public class CommentCreate extends JFrame{
 
     }
 
+    public String getText(){
+        return this.textPanel.getText();
+    }
+    public void setText(String t){
+        this.textPanel.setText(t);
+    }
+
     private void onOK() {
         // add your code here
         dispose();

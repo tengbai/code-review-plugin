@@ -46,8 +46,8 @@ public class CommentList extends JFrame {
 
     public static void main(String[] args) {
         List<CommentDTO> commentDTOs  = Arrays.asList(
-                CommentDTO.builder().id(1).content("hhh").createData(11L).updatedDate(11L).build(),
-                CommentDTO.builder().id(2).content("nihao").createData(11L).updatedDate(11L).build()
+                CommentDTO.builder().id(1).title("ddd").content("hhh").createData(11L).updatedDate(11L).build(),
+                CommentDTO.builder().id(2).title("hh").content("nihao").createData(11L).updatedDate(11L).build()
         );
         new CommentList(commentDTOs);
     }

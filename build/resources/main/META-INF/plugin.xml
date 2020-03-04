@@ -15,8 +15,8 @@
     <action id="action.ShowCommentsAction" class="action.ShowCommentsAction" text="Show Comment List" description="show comment list">
       <add-to-group group-id="CodeMenu" anchor="first"/>
     </action>
-    <action id="test" class="action.test" text="test" description="test">
-      <add-to-group group-id="EditMenu" anchor="first"/>
+    <action id="action.CodeSelectAction" class="action.CodeSelectAction" text="add comment" description="test">
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
     </action>
   </actions>
 </idea-plugin>

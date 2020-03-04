@@ -20,8 +20,14 @@
                 description="show comment list">
             <add-to-group group-id="CodeMenu" anchor="first"/>
         </action>
-        <action id="test" class="action.test" text="test" description="test">
-            <add-to-group group-id="EditMenu" anchor="first"/>
+        <action id="action.CodeSelectAction" class="action.CodeSelectAction" text="add comment" description="test">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
+        <!--<action id="EditorBasics.EditorIllustrationAction"-->
+                <!--class="action.EditorIllustrationAction"-->
+                <!--text="Editor Replace Text"-->
+                <!--description="Replaces selected text with 'Replacement'.">-->
+            <!--<add-to-group group-id="EditorPopupMenu" anchor="first"/>-->
+        <!--</action>-->
     </actions>
 </idea-plugin>
