@@ -25,13 +25,12 @@ public class CommentItem extends JComponent {
 
         this.titlePanel.setText(comment.getTitle());
         this.text.setText(comment.getContent());
-        this.textPane.setBackground(Color.blue);
         this.textPane.add(this.text);
 
+        editButton.setBounds(10 ,20,70, 35);
+        deleteButton.setBounds(10, 60, 70 ,35);
         buttonPanel.add(deleteButton);
         buttonPanel.add(editButton);
-        editButton.setBounds(10 ,20,60, 20);
-        deleteButton.setBounds(10, 60, 60 ,20);
 
         this.contentPane.add(titlePanel, BorderLayout.NORTH);
         this.contentPane.add(textPane, BorderLayout.CENTER);

@@ -33,6 +33,7 @@ public class CommentCreate extends JFrame {
                 .updatedDate(new Date().getTime())
                 .build();
         Store.appendComment(commentDTO);
+        this.jFrame.setVisible(false);
     }
 
     private void handleCancelBtnClick(ActionEvent e) {

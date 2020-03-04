@@ -16,7 +16,6 @@ public class CommentList extends JFrame {
         jFrame.setSize(500, 600);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         jPanel.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
         commentDTOs.stream()
