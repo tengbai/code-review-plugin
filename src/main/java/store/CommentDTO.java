@@ -9,14 +9,14 @@ import lombok.Setter;
 @Getter
 @Builder
 public class CommentDTO {
-    private int id;
+    private String id;
     private String title;
     private String content;
     private Long createData;
     private Long updatedDate;
 
 
-    public CommentDTO(int id, String title, String content, Long createData, Long updatedDate) {
+    public CommentDTO(String id, String title, String content, Long createData, Long updatedDate) {
         this.id = id;
         this.title = title;
         this.content = content;

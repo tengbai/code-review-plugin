@@ -61,6 +61,6 @@ public class CommentItem extends JComponent {
         // TODO: place custom component creation code here
     }
     public static void main(String[] args) {
-        new CommentItem(CommentDTO.builder().id(1).title("hhh").content("hhh").createData(11L).updatedDate(11L).build());
+        new CommentItem(CommentDTO.builder().id("1").title("hhh").content("hhh").createData(11L).updatedDate(11L).build());
     }
 }

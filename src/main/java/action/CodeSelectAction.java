@@ -12,8 +12,7 @@ public class CodeSelectAction extends AnAction {
     public void actionPerformed(AnActionEvent e) {
         // TODO: insert action logic here
         Editor editor = e.getData(CommonDataKeys.EDITOR);
-        String text = editor.getSelectionModel().getSelectedText();
-        CommentCreate commentCreate = new CommentCreate();
-        commentCreate.setText(text);
+        String title = editor.getSelectionModel().getSelectedText();
+        CommentCreate commentCreate = new CommentCreate(title);
     }
 }

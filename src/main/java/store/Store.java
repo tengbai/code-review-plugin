@@ -45,7 +45,7 @@ public class Store {
         if(commentDTOs.size() == 0){
             return;
         }
-        int deleteId = comment.getId();
+        String deleteId = comment.getId();
         commentDTOs = commentDTOs.stream()
                 .filter(c -> c.getId() != deleteId)
                 .collect(Collectors.toList());
