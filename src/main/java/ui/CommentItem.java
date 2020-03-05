@@ -1,13 +1,12 @@
 package ui;
 
-import constants.NameConstants;
 import store.CommentDTO;
 import store.Store;
-import utils.PropertiesComponentUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 public class CommentItem extends JComponent {
     private JPanel contentPane = new JPanel();
@@ -54,9 +53,7 @@ public class CommentItem extends JComponent {
     }
 
     private void handleDeleteBtnClick(ActionEvent e) {
-        PropertiesComponentUtils.appendValue(NameConstants.LOG_NAME, "deletId"+ this.commentDTO.getId());
-        Store.deleteComment(this.commentDTO.getId());
-        new Log(PropertiesComponentUtils.getValue(NameConstants.LOG_NAME));
+        List<CommentDTO> commentDTOs = Store.deleteComment(this.commentDTO.getId());
     }
 
     public JPanel getContentPane(){
@@ -82,7 +79,7 @@ public class CommentItem extends JComponent {
         // TODO: place custom component creation code here
     }
     public static void main(String[] args) {
-        new CommentItem(CommentDTO.builder().id("1").title("hhh").content("hhh").createData(11L).updatedDate(11L).build());
+//        new CommentItem(CommentDTO.builder().id("1").title("hhh").content("hhh").createData(11L).updatedDate(11L).build());
     }
 
 

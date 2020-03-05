@@ -4,11 +4,13 @@ import store.CommentDTO;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CommentList extends JFrame {
+public class CommentList extends JFrame implements ActionListener {
     private JFrame jFrame = new JFrame("code review list");
     private JPanel jPanel = new JPanel();
 
@@ -18,15 +20,19 @@ public class CommentList extends JFrame {
         jFrame.setVisible(true);
 
         jPanel.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
-        commentDTOs.stream()
-                .map(item -> jPanel.add(new CommentItem(item).getContentPane()))
-                .collect(Collectors.toList());
-
+        this.drawCommentItemsUI(commentDTOs);
         jFrame.setContentPane(jPanel);
     }
 
-    private void drawCommentItemUI(CommentDTO commentDTO){
-        JPanel itemPanel = new CommentItem(commentDTO).getContentPane();
+    public void refreshCommentItemsUI(List<CommentDTO> commentDTOs){
+        this.jPanel.removeAll();
+        this.drawCommentItemsUI(commentDTOs);
+    }
+
+    private void drawCommentItemsUI(List<CommentDTO> commentDTOs){
+        commentDTOs.stream()
+                .map(item -> jPanel.add(new CommentItem(item).getContentPane()))
+                .collect(Collectors.toList());
     }
 
     private void onOK() {
@@ -49,5 +55,10 @@ public class CommentList extends JFrame {
                 CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build()
         );
         new CommentList(commentDTOs);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+//        if(e.getSource() === "")
     }
 }

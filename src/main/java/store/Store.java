@@ -44,15 +44,16 @@ public class Store {
         setComments(commentDTOs);
     }
 
-    public static void deleteComment(String deleteId) {
+    public static List<CommentDTO> deleteComment(String deleteId) {
         List<CommentDTO> commentDTOs = getComments();
         if(commentDTOs.size() == 0){
-            return;
+            return Collections.EMPTY_LIST;
         }
         commentDTOs = commentDTOs.stream()
                 .filter(c -> !c.getId().equals(deleteId))
                 .collect(Collectors.toList());
         setComments(commentDTOs);
+        return commentDTOs;
     }
 
     private static void setPropertiesComponent(List<CommentDTO> comments){
