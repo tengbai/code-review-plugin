@@ -1,5 +1,6 @@
 package store;
 
+import Constants.NameConstants;
 import com.alibaba.fastjson.JSON;
 import utils.PropertiesComponentUtils;
 
@@ -12,7 +13,7 @@ public class Store {
 
     public static List<CommentDTO> getComments() {
         return getPropertiesComponent().stream()
-                .sorted(Comparator.comparing(CommentDTO::getUpdatedDate))
+                .sorted(Comparator.comparing(CommentDTO::getUpdatedDate).reversed())
                 .collect(Collectors.toList());
     }
 
@@ -33,7 +34,7 @@ public class Store {
         }
         commentDTOs = commentDTOs.stream()
                 .map(c -> {
-                    if (c.getId() == comment.getId()) {
+                    if (c.getId().equals(comment.getId())) {
                         return comment;
                     } else {
                         return c;
@@ -43,25 +44,24 @@ public class Store {
         setComments(commentDTOs);
     }
 
-    public static void deleteComment(CommentDTO comment) {
+    public static void deleteComment(String deleteId) {
         List<CommentDTO> commentDTOs = getComments();
         if(commentDTOs.size() == 0){
             return;
         }
-        String deleteId = comment.getId();
         commentDTOs = commentDTOs.stream()
-                .filter(c -> c.getId() != deleteId)
+                .filter(c -> !c.getId().equals(deleteId))
                 .collect(Collectors.toList());
         setComments(commentDTOs);
     }
 
     private static void setPropertiesComponent(List<CommentDTO> comments){
         String commentJson = listToJson(comments);
-        PropertiesComponentUtils.setValue(commentJson);
+        PropertiesComponentUtils.setValue(NameConstants.APPLICATION_NAME, commentJson);
     }
 
     private static List<CommentDTO> getPropertiesComponent(){
-        String commentJson = PropertiesComponentUtils.getValue();
+        String commentJson = PropertiesComponentUtils.getValue(NameConstants.APPLICATION_NAME);
         if(commentJson == null){
             return Collections.EMPTY_LIST;
         }

@@ -1,7 +1,9 @@
 package ui;
 
+import Constants.NameConstants;
 import store.CommentDTO;
 import store.Store;
+import utils.PropertiesComponentUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,7 +54,9 @@ public class CommentItem extends JComponent {
     }
 
     private void handleDeleteBtnClick(ActionEvent e) {
-        Store.deleteComment(this.commentDTO);
+        PropertiesComponentUtils.appendValue(NameConstants.LOG_NAME, "deletId"+ this.commentDTO.getId());
+        Store.deleteComment(this.commentDTO.getId());
+        new Log(PropertiesComponentUtils.getValue(NameConstants.LOG_NAME));
     }
 
     public JPanel getContentPane(){

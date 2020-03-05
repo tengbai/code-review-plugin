@@ -11,13 +11,13 @@ public class PropertiesComponentUtils {
      *
      * @param value
      */
-    public static void setValue(@Nullable String value) {
+    public static void setValue(@Nullable String key, @Nullable String value) {
         if (value == null) {
             return;
         }
         //获取 application 级别的 PropertiesComponent
         PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
-        propertiesComponent.setValue(NameConstants.APPLICATION_NAME, value);
+        propertiesComponent.setValue(key, value);
     }
 
     /**
@@ -25,11 +25,17 @@ public class PropertiesComponentUtils {
      *
      * @return
      */
-    public static String getValue() {
+    public static String getValue(String key) {
 
         PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
-        String value = propertiesComponent.getValue(NameConstants.APPLICATION_NAME);
+        String value = propertiesComponent.getValue(key);
         return value == null ? null : value;
     }
 
+    public static void appendValue(String key, String value) {
+        PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
+        String oldValue = propertiesComponent.getValue(key);
+        String totalValue = oldValue + "\n" + value;
+        propertiesComponent.setValue(key, totalValue);
+    }
 }
