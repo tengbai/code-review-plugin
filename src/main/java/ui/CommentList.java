@@ -4,13 +4,11 @@ import store.CommentDTO;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CommentList extends JFrame implements ActionListener {
+public class CommentList extends JFrame {
     private JFrame jFrame = new JFrame("code review list");
     private JPanel jPanel = new JPanel();
 
@@ -20,6 +18,7 @@ public class CommentList extends JFrame implements ActionListener {
         jFrame.setVisible(true);
 
         jPanel.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
+
         this.drawCommentItemsUI(commentDTOs);
         jFrame.setContentPane(jPanel);
     }
@@ -27,11 +26,13 @@ public class CommentList extends JFrame implements ActionListener {
     public void refreshCommentItemsUI(List<CommentDTO> commentDTOs){
         this.jPanel.removeAll();
         this.drawCommentItemsUI(commentDTOs);
+        this.jFrame.setContentPane(jPanel);
     }
 
     private void drawCommentItemsUI(List<CommentDTO> commentDTOs){
+        CommentList commentListComponent = this;
         commentDTOs.stream()
-                .map(item -> jPanel.add(new CommentItem(item).getContentPane()))
+                .map(item -> jPanel.add(new CommentItem(item, commentListComponent).getContentPane()))
                 .collect(Collectors.toList());
     }
 
@@ -57,8 +58,4 @@ public class CommentList extends JFrame implements ActionListener {
         new CommentList(commentDTOs);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-//        if(e.getSource() === "")
-    }
 }

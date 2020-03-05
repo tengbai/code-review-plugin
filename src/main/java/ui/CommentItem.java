@@ -19,11 +19,11 @@ public class CommentItem extends JComponent {
 
     private CommentDTO commentDTO;
 
-    public CommentItem(CommentDTO comment) {
+    public CommentItem(CommentDTO comment, CommentList commentList) {
         this.commentDTO = comment;
         this.createUI(comment);
         this.editButton.addActionListener(e -> this.handleEditBtnClick(e));
-        this.deleteButton.addActionListener(e -> this.handleDeleteBtnClick(e));
+        this.deleteButton.addActionListener(e -> this.handleDeleteBtnClick(e, commentList));
     }
 
     private void createUI(CommentDTO comment){
@@ -52,8 +52,9 @@ public class CommentItem extends JComponent {
 
     }
 
-    private void handleDeleteBtnClick(ActionEvent e) {
+    private void handleDeleteBtnClick(ActionEvent e, CommentList commentList) {
         List<CommentDTO> commentDTOs = Store.deleteComment(this.commentDTO.getId());
+        commentList.refreshCommentItemsUI(commentDTOs);
     }
 
     public JPanel getContentPane(){
