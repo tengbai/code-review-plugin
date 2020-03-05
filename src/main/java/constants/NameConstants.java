@@ -1,4 +1,4 @@
-package Constants;
+package constants;
 
 public interface NameConstants {
     String APPLICATION_NAME = "CodeReviewPlugin";

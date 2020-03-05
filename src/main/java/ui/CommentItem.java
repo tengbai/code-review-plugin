@@ -1,6 +1,6 @@
 package ui;
 
-import Constants.NameConstants;
+import constants.NameConstants;
 import store.CommentDTO;
 import store.Store;
 import utils.PropertiesComponentUtils;

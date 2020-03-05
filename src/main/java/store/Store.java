@@ -1,6 +1,6 @@
 package store;
 
-import Constants.NameConstants;
+import constants.NameConstants;
 import com.alibaba.fastjson.JSON;
 import utils.PropertiesComponentUtils;
 

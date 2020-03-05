@@ -1,6 +1,5 @@
 package utils;
 
-import Constants.NameConstants;
 import com.intellij.ide.util.PropertiesComponent;
 import org.jetbrains.annotations.Nullable;
 
