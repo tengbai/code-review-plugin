@@ -15,7 +15,7 @@
     <action id="action.ShowCommentsAction" class="action.ShowCommentsAction" text="Show Comment List" description="show comment list">
       <add-to-group group-id="CodeMenu" anchor="first"/>
     </action>
-    <action id="action.CodeSelectAction" class="action.CodeSelectAction" text="add comment" description="test">
+    <action id="action.CodeSelectAction" class="action.CodeSelectAction" text="Add Comment" description="add review comment">
       <add-to-group group-id="EditorPopupMenu" anchor="first"/>
     </action>
   </actions>

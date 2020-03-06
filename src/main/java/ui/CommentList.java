@@ -11,48 +11,40 @@ import java.util.stream.Collectors;
 public class CommentList extends JFrame {
     private JFrame jFrame = new JFrame("code review list");
     private JPanel jPanel = new JPanel();
+    JScrollPane scrollPane = new JScrollPane();
 
     public CommentList(List<CommentDTO> commentDTOs) {
         jFrame.setSize(500, 600);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
 
-        jPanel.setLayout(new FlowLayout(FlowLayout.CENTER,20,20));
-
+        jPanel.setLayout(new GridLayout(commentDTOs.size(), 1));
         this.drawCommentItemsUI(commentDTOs);
-        jFrame.setContentPane(jPanel);
+        scrollPane.setViewportView(jPanel);
+        jFrame.setContentPane(scrollPane);
     }
 
     public void refreshCommentItemsUI(List<CommentDTO> commentDTOs){
         this.jPanel.removeAll();
+        jPanel.setLayout(new GridLayout(commentDTOs.size(), 1));
         this.drawCommentItemsUI(commentDTOs);
-        this.jFrame.setContentPane(jPanel);
+        scrollPane.setViewportView(jPanel);
+        this.jFrame.setContentPane(scrollPane);
     }
 
-    private void drawCommentItemsUI(List<CommentDTO> commentDTOs){
+    private void drawCommentItemsUI(List<CommentDTO> commentDTOs) {
         CommentList commentListComponent = this;
         commentDTOs.stream()
                 .map(item -> jPanel.add(new CommentItem(item, commentListComponent).getContentPane()))
                 .collect(Collectors.toList());
     }
 
-    private void onOK() {
-        // add your code here
-        dispose();
-    }
-
-    private void onCancel() {
-        // add your code here if necessary
-        this.jFrame.setVisible(false);
-    }
-
-    private void drawUI(){
-
-    }
-
     public static void main(String[] args) {
-        List<CommentDTO> commentDTOs  = Arrays.asList(
+        List<CommentDTO> commentDTOs = Arrays.asList(
                 CommentDTO.builder().id("1").title("ddd").content("hhh").createData(11L).updatedDate(11L).build(),
+                CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build(),
+                CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build(),
+                CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build(),
                 CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build()
         );
         new CommentList(commentDTOs);

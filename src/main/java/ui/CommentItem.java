@@ -29,7 +29,7 @@ public class CommentItem extends JComponent {
     private void createUI(CommentDTO comment){
         contentPane.setLayout(new BorderLayout());
         contentPane.setPreferredSize(new Dimension(400, 200));
-        titlePanel.setPreferredSize(new Dimension(400,20));
+        titlePanel.setPreferredSize(new Dimension(360,20));
         textPane.setPreferredSize(new Dimension(300,200));
         buttonPanel.setPreferredSize(new Dimension(100, 200));
         buttonPanel.setLayout(null);
