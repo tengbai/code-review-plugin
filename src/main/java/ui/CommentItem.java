@@ -22,7 +22,7 @@ public class CommentItem extends JComponent {
     public CommentItem(CommentDTO comment, CommentList commentList) {
         this.commentDTO = comment;
         this.createUI(comment);
-        this.editButton.addActionListener(e -> this.handleEditBtnClick(e));
+        this.editButton.addActionListener(e -> this.handleEditBtnClick(e, commentList));
         this.deleteButton.addActionListener(e -> this.handleDeleteBtnClick(e, commentList));
     }
 
@@ -48,8 +48,8 @@ public class CommentItem extends JComponent {
         this.contentPane.add(buttonPanel, BorderLayout.EAST);
     }
 
-    private void handleEditBtnClick(ActionEvent e){
-
+    private void handleEditBtnClick(ActionEvent e, CommentList commentList){
+        new CommentEdit(commentDTO, commentList);
     }
 
     private void handleDeleteBtnClick(ActionEvent e, CommentList commentList) {

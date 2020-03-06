@@ -65,25 +65,6 @@ public class CommentCreate extends JFrame {
         jFrame.setContentPane(contentPanel);
     }
 
-    public String getText() {
-        return this.textPanel.getText();
-    }
-
-    public void setText(String t) {
-        this.textPanel.setText(t);
-    }
-
-    private void onOK() {
-        // add your code here
-        dispose();
-        this.jFrame.setVisible(false);
-    }
-
-    private void onCancel() {
-        // add your code here if necessary
-        this.jFrame.setVisible(false);
-    }
-
     public static void main(String[] args) {
         new CommentCreate("title");
     }
