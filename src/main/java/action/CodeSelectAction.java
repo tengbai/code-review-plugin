@@ -6,22 +6,43 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
+import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import ui.CommentCreate;
 
+@Slf4j
 public class CodeSelectAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-        Project project = e.getData(CommonDataKeys.PROJECT);
-        String projectName = project.getName();
+        new CommentCreate(
+                getProjectName(e),
+                getFileName(e),
+                getSelectedLineNumber(e)
+        );
+    }
 
-        PsiFile psiFile = e.getData(CommonDataKeys.PSI_FILE);
-        String className = psiFile.getVirtualFile().getName();
-
+    private int getSelectedLineNumber(AnActionEvent e) {
         Editor editor = e.getData(CommonDataKeys.EDITOR);
-        String line = String.valueOf(editor.getLineHeight());
+        assert editor != null;
+        return editor.getCaretModel().getLogicalPosition().line + 1;
+    }
 
-        String title = projectName + ": "+ className + "(line "+ line+")";
-        new CommentCreate(title);
+    @NotNull
+    private String getFileName(AnActionEvent e) {
+        PsiFile psiFile = e.getData(CommonDataKeys.PSI_FILE);
+        assert psiFile != null;
+        String fileName = psiFile.getVirtualFile().getName();
+        log.info("FileName:{}", fileName);
+        return fileName;
+    }
+
+    @NotNull
+    private String getProjectName(AnActionEvent e) {
+        Project project = e.getData(CommonDataKeys.PROJECT);
+        assert project != null;
+        String projectName = project.getName();
+        log.info("projectName:{}", projectName);
+        return projectName;
     }
 }
