@@ -1,3 +1,9 @@
+# Code Review 记录插件
+
+### Version
+
+V 0.0.1 
+
 ### 依赖
 * java 8
 * gradle 4.10
