@@ -56,6 +56,10 @@ public class CommentItem extends JComponent {
     }
 
     private void handleDeleteBtnClick(ActionEvent e, CommentList commentList) {
+        JFrame jFrame = new JFrame("cancel");
+        JLabel jLabel = new JLabel("Do you want to delete this comment?");
+        JButton yesBtn = new JButton("Yes");
+        JButton noBtn = new JButton("No");
         List<CommentDTO> commentDTOs = Store.deleteComment(this.commentDTO.getId());
         commentList.refreshCommentItemsUI(commentDTOs);
     }

@@ -42,6 +42,7 @@ public class CommentCreate extends JFrame {
     }
 
     private void createUI(String title) {
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setSize(400, 340);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);

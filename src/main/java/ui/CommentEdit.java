@@ -44,6 +44,7 @@ public class CommentEdit extends JFrame {
     }
 
     private void createUI(CommentDTO commentDTO) {
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setSize(400, 340);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
