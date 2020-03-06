@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Date;
-import java.util.UUID;
 
 public class CommentEdit extends JFrame {
     private JFrame jFrame = new JFrame("edit comment");
@@ -17,9 +16,10 @@ public class CommentEdit extends JFrame {
     private JTextArea textPanel = new JTextArea(10, 4);
     private JButton cancelButton = new JButton("cancel");
     private JButton confirmButton = new JButton("confirm");
-
+    private String commentId;
 
     public CommentEdit(CommentDTO commentDTO, CommentList commentList) {
+        this.commentId = commentDTO.getId();
         this.createUI(commentDTO);
         this.confirmButton.addActionListener(e -> this.handleConfirmBtnClick(e, commentList));
         this.cancelButton.addActionListener(e -> this.handleCancelBtnClick(e));
@@ -27,7 +27,7 @@ public class CommentEdit extends JFrame {
 
     private void handleConfirmBtnClick(ActionEvent e, CommentList commentList) {
         CommentDTO commentDTO = CommentDTO.builder()
-                .id(UUID.randomUUID().toString())
+                .id(this.commentId)
                 .title(this.titlePanel.getText())
                 .content(this.textPanel.getText())
                 .createData(new Date().getTime())
