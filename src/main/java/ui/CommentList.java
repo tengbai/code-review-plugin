@@ -4,7 +4,7 @@ import store.CommentDTO;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +33,12 @@ public class CommentList extends JFrame {
     }
 
     private void drawCommentItemsUI(List<CommentDTO> commentDTOs) {
+        if(commentDTOs.size() == 0){
+            JLabel jLabel = new JLabel("no comments");
+            jLabel.setBounds(120,200,100,10);
+            jPanel.setLayout(null);
+            jPanel.add(jLabel);
+        }
         CommentList commentListComponent = this;
         commentDTOs.stream()
                 .map(item -> jPanel.add(new CommentItem(item, commentListComponent).getContentPane()))
@@ -40,13 +46,7 @@ public class CommentList extends JFrame {
     }
 
     public static void main(String[] args) {
-        List<CommentDTO> commentDTOs = Arrays.asList(
-                CommentDTO.builder().id("1").title("ddd").content("hhh").createData(11L).updatedDate(11L).build(),
-                CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build(),
-                CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build(),
-                CommentDTO.builder().id("2").title("hh").content("dfhkdhfkd 即可收到回复剋舒服   是速度速度速度说的说的哈哈哈哈").createData(11L).updatedDate(11L).build(),
-                CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build()
-        );
+        List<CommentDTO> commentDTOs = Collections.emptyList();
         new CommentList(commentDTOs);
     }
 

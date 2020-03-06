@@ -51,7 +51,7 @@ public class CommentCreate extends JFrame {
 
         titlePanel.setText(title);
         contentPanel.setSize(400, 300);
-        titlePanel.setBounds(25, 10, 360, 10);
+        titlePanel.setBounds(25, 10, 360, 15);
         textPanel.setBounds(20, 30, 360, 200);
         buttonPanel.setBounds(20, 240, 360, 50);
 

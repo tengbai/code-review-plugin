@@ -75,34 +75,5 @@ public class CommentItem extends JComponent {
         return this.contentPane;
     }
 
-    private void onOK() {
-        // add your code here
-    }
 
-    private void onCancel() {
-        // add your code here if necessary
-    }
-
-    public static void main(CommentDTO commentDTO) {
-//        CommentItem dialog = new CommentItem(commentDTO);
-//        dialog.pack();
-//        dialog.setVisible(true);
-//        System.exit(0);
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
-    public static void main(String[] args) {
-//        new CommentItem(CommentDTO.builder().id("1").title("hhh").content("hhh").createData(11L).updatedDate(11L).build());
-    }
-
-
-    private void setCommentDTO(CommentDTO commentDTO){
-        this.commentDTO = commentDTO;
-    }
-
-    private CommentDTO getCommentDTO(){
-        return this.commentDTO;
-    }
 }
