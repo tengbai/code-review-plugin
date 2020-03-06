@@ -2,6 +2,7 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.function.Function;
 
 public class CancelModal extends JFrame {
     JFrame jFrame = new JFrame("cancel");
@@ -11,7 +12,9 @@ public class CancelModal extends JFrame {
     JButton yesBtn = new JButton("Yes");
     JButton noBtn = new JButton("No");
 
-    public CancelModal()  {
+    public CancelModal(Function handelConfirmFunc)  {
+        yesBtn.addActionListener(e-> this.handleYesBtnClick(handelConfirmFunc));
+        noBtn.addActionListener(e-> this.handleNoBtnClick());
         jFrame.setSize(350, 260);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
@@ -32,7 +35,15 @@ public class CancelModal extends JFrame {
         jFrame.setContentPane(contentPanel);
     }
 
+    private void handleYesBtnClick(Function handelConfirmFunc){
+        handelConfirmFunc.apply(null);
+        this.jFrame.setVisible(false);
+    }
+
+    private void handleNoBtnClick(){
+        this.jFrame.setVisible(false);
+    }
+
     public static void main(String[] args) {
-        new CancelModal();
     }
 }

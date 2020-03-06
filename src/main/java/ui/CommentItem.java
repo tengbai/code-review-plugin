@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.List;
+import java.util.function.Function;
 
 public class CommentItem extends JComponent {
     private JPanel contentPane = new JPanel();
@@ -56,10 +57,16 @@ public class CommentItem extends JComponent {
     }
 
     private void handleDeleteBtnClick(ActionEvent e, CommentList commentList) {
-        JFrame jFrame = new JFrame("cancel");
-        JLabel jLabel = new JLabel("Do you want to delete this comment?");
-        JButton yesBtn = new JButton("Yes");
-        JButton noBtn = new JButton("No");
+        new CancelModal(new Function() {
+            @Override
+            public Object apply(Object o) {
+                CommentItem.this.handleDeleteConfirm(commentList);
+                return null;
+            }
+        });
+    }
+
+    private void handleDeleteConfirm(CommentList commentList) {
         List<CommentDTO> commentDTOs = Store.deleteComment(this.commentDTO.getId());
         commentList.refreshCommentItemsUI(commentDTOs);
     }
