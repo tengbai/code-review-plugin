@@ -11,7 +11,7 @@ import java.util.List;
 public class CommentItem extends JComponent {
     private JPanel contentPane = new JPanel();
     private JLabel titlePanel = new JLabel();
-    private JTextPane text = new JTextPane();
+    private JTextArea text = new JTextArea(10, 30);
     private JPanel textPane = new JPanel();
     private JPanel buttonPanel = new JPanel();
     private JButton editButton = new JButton("edit");
@@ -36,6 +36,9 @@ public class CommentItem extends JComponent {
 
         this.titlePanel.setText(comment.getTitle());
         this.text.setText(comment.getContent());
+        this.text.setEditable(false);
+        this.text.setLineWrap(true);
+        this.text.setBounds(10,10,300,200);
         this.textPane.add(this.text);
 
         editButton.setBounds(10 ,20,70, 35);

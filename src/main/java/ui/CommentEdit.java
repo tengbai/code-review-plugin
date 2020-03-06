@@ -13,7 +13,7 @@ public class CommentEdit extends JFrame {
     private JLabel titlePanel = new JLabel();
     private JPanel buttonPanel = new JPanel();
     private JPanel contentPanel = new JPanel();
-    private JTextArea textPanel = new JTextArea(10, 4);
+    private JTextArea textPanel = new JTextArea(10, 40);
     private JButton cancelButton = new JButton("cancel");
     private JButton confirmButton = new JButton("confirm");
     private String commentId;
