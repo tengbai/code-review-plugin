@@ -19,6 +19,7 @@ public class CommentCreate extends JFrame {
     private JButton confirmButton = new JButton("confirm");
 
     public CommentCreate(String title) {
+        textPanel.setLineWrap(true);
         this.createUI(title);
         this.confirmButton.addActionListener(e -> this.handleConfirmBtnClick(e));
         this.cancelButton.addActionListener(e -> this.handleCancelBtnClick(e));

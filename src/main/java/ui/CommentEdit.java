@@ -19,6 +19,7 @@ public class CommentEdit extends JFrame {
     private String commentId;
 
     public CommentEdit(CommentDTO commentDTO, CommentList commentList) {
+        textPanel.setLineWrap(true);
         this.commentId = commentDTO.getId();
         this.createUI(commentDTO);
         this.confirmButton.addActionListener(e -> this.handleConfirmBtnClick(e, commentList));

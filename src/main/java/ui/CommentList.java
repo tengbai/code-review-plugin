@@ -44,7 +44,7 @@ public class CommentList extends JFrame {
                 CommentDTO.builder().id("1").title("ddd").content("hhh").createData(11L).updatedDate(11L).build(),
                 CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build(),
                 CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build(),
-                CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build(),
+                CommentDTO.builder().id("2").title("hh").content("dfhkdhfkd 即可收到回复剋舒服   是速度速度速度说的说的哈哈哈哈").createData(11L).updatedDate(11L).build(),
                 CommentDTO.builder().id("2").title("hh").content("nihao").createData(11L).updatedDate(11L).build()
         );
         new CommentList(commentDTOs);
