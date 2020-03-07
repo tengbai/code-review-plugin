@@ -1,26 +1,18 @@
 <idea-plugin>
     <id>practice.code-review-plugin</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="baiyejianxin@126.com" url="">Page</vendor>
 
-    <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-    ]]></description>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
-    <!-- uncomment to enable plugin in all products
-    <depends>com.intellij.modules.lang</depends>
-    -->
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Code Review"
+                    icon="/img/code-review.png"
+                    anchor="bottom"
+                    factoryClass="com.page.plugin.CodeReviewToolWindowFactory">
+        </toolWindow>
+    </extensions>
 
     <actions>
-        <!-- Add your actions here -->
-        <action id="action.ShowCommentsAction" class="action.ShowCommentsAction" text="Show Comment List"
-                description="show comment list">
-            <add-to-group group-id="CodeMenu" anchor="first"/>
-        </action>
-        <action id="action.CodeSelectAction" class="action.CodeSelectAction" text="Add Comment" description="add review comment">
+        <action id="action.CodeSelectAction" class="action.CodeSelectAction" text="Add Comment">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
     </actions>
