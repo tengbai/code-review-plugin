@@ -4,6 +4,10 @@
 
 V 0.0.1 
 
+### 使用到的 IDEA 开发知识点：
+
+[IDEA_DOC](IDEA_DOC.md)
+
 ### 依赖
 * java 8
 * gradle 4.10
